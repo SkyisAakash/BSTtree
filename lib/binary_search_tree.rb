@@ -34,6 +34,8 @@ class BinarySearchTree
   end
 
   def delete(value)
+    node = find(value, @root)
+    delete_from_root(node, @root)
   end
 
   # helper method for #delete:
