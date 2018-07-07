@@ -16,6 +16,21 @@ class BinarySearchTree
   end
 
   def find(value, tree_node = @root)
+    if tree_node.value == value 
+      return tree_node
+    elsif value < tree_node.value
+      if tree_node.left.nil? 
+        return nil 
+      else 
+        return find(value, tree_node.left)
+      end
+    else
+      if tree_node.right.nil? 
+        return nil 
+      else 
+        return find(value, tree_node.right)
+      end
+    end
   end
 
   def delete(value)
@@ -37,9 +52,9 @@ class BinarySearchTree
 
   private
   # optional helper methods go here:
-  
+
   def insert_as_child(node, parent)
-    if parent.value > node.value 
+    if parent.value >= node.value 
       if parent.left.nil?
         parent.left = node
       else insert_as_child(node, parent.left)
