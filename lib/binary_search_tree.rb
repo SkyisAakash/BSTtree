@@ -34,12 +34,20 @@ class BinarySearchTree
   end
 
   def delete(value)
+    if @root.value == value
+      @root = nil 
+    else
     node = find(value, @root)
-    delete_from_root(node, @root)
+    delete_from_parent(node, @root)
+    end
   end
 
   # helper method for #delete:
   def maximum(tree_node = @root)
+    if tree_node.right.nil?
+      return tree_node
+    else return maximum(tree_node.right)
+    end
   end
 
   def depth(tree_node = @root)
@@ -56,16 +64,40 @@ class BinarySearchTree
   # optional helper methods go here:
 
   def insert_as_child(node, parent)
-    if parent.value >= node.value 
+    if parent >= node 
       if parent.left.nil?
         parent.left = node
       else insert_as_child(node, parent.left)
       end
-    elsif parent.value < node.value
+    elsif parent < node
        if parent.right.nil?
         parent.right = node
        else insert_as_child(node, parent.right)
        end
+    end
+  end
+
+  def delete_from_parent(node, parent)
+    if node.right.nil? && node.left.nil?
+      reassign_node(parent, node, nil)
+    elsif node.right.nil?
+      reassign_node(parent, node, node.left)
+    elsif node.left.nil?
+      reassign_node(parent, node, node.right)
+    else
+
+
+    end
+  end
+
+  def reassign_node(parent, old_child, new_child)
+    if parent.left == old_child
+      parent.left = new_child
+    elsif parent.right == old_child
+      parent.right = new_child
+    elsif old_child <= parent
+      reassign_node(parent.left, old_child, new_child)
+    else reassign_node(parent.right, old_child, new_child)
     end
   end
 

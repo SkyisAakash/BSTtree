@@ -7,6 +7,23 @@ class BSTNode
   def ==(node2)
     self.value == node2.value
   end
+
+  def <(node2)
+    self.value < node2.value
+  end
+
+  def >(node2)
+    self.value > node2.value
+  end
+
+  def >=(node2)
+    self.value >= node2.value
+  end
+
+  def <=(node2)
+    self.value <= node2.value
+  end
+
 end
 
 # n1 = BSTNode.new(1)

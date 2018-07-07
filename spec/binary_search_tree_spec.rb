@@ -1,5 +1,6 @@
 require 'rspec'
 require 'binary_search_tree'
+require 'byebug'
 
 describe BinarySearchTree do
   let(:bst) { BinarySearchTree.new }
@@ -78,8 +79,9 @@ describe BinarySearchTree do
     context 'if target node has no children' do
       it 'deletes the target node' do
         parent_of_four = prefilled_bst.root.left
+        # debugger
         prefilled_bst.delete(4)
-
+        # debugger
         expect(parent_of_four.right).to eq(nil)
       end
 
