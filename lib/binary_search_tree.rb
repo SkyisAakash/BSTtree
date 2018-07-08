@@ -107,8 +107,8 @@ class BinarySearchTree
     elsif node.left.nil?
       reassign_node(parent, node, node.right)
     else
-      node_r = maximum(parent.left)
-      reassign_node(parent, node_r, node_r.left)
+      node_r = maximum(node.left)
+      reassign_node(parent, node_r, node_r.left) if !node_r.left.nil?
       reassign_node(parent, node, node_r)
     end
   end
