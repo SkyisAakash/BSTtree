@@ -1,5 +1,7 @@
 require 'rspec'
 require 'bst_practical'
+require 'byebug'
+require 'binary_search_tree'
 
 describe 'BST Practical Question' do
   let(:prefilled_bst) do
@@ -22,6 +24,7 @@ describe 'BST Practical Question' do
 
   it "returns the kth largest node" do
     k = 7
+    # debugger
     k_node = prefilled_bst.root.left.left.right
     # the above node is pointing to the node with value 2
 
@@ -30,6 +33,7 @@ describe 'BST Practical Question' do
 
     n = 2 
     n_node = balanced_bst.root.right
+    # debugger
     # the above node is pointing to the node with value 16
 
     expect(kth_largest(balanced_bst.root, n)).to be(n_node)
